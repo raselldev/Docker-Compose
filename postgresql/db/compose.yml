@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db_prod:
+    image: postgres:alpine
+    restart: always
+    container_name: production
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: raselldev
+      POSTGRES_PASSWORD: asdqwe123
+    volumes:
+      - production:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  db_testing:
+    image: postgres:alpine
+    restart: always
+    container_name: testing
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: raselldev
+      POSTGRES_PASSWORD: asdqwe123
+    volumes:
+      - testing:/var/lib/postgresql/data
+    ports:
+      - "54320:5432"
+
+volumes:
+  production:
+  testing:
